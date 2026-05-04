@@ -32,8 +32,8 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Jim Gladden — Central Maryland Real Estate Expert | Bob Lucido Team" },
-      { name: "description", content: "Jim Gladden, premier real estate agent with the Bob Lucido Team (Keller Williams Lucido Agency). Buy, sell, and rent in Sykesville, Eldersburg, Westminster, Columbia, and Frederick MD." },
+      { title: "Jim Gladden — Central Maryland Real Estate Expert | Lucido Global" },
+      { name: "description", content: "Jim Gladden, licensed Maryland real estate agent with Lucido Global. Buy, sell, and invest in Sykesville, Eldersburg, Westminster, Columbia, and Frederick MD." },
       { name: "author", content: "Jim Gladden" },
       { property: "og:title", content: "Jim Gladden — Central Maryland Real Estate Expert" },
       { property: "og:description", content: "Your Central Maryland neighborhood expert for buying, selling, and renting." },

@@ -12,11 +12,9 @@ import {
 const NAV = [
   { to: "/buy", label: "Buy" },
   { to: "/sell", label: "Sell" },
-  { to: "/rent", label: "Rent" },
   { to: "/services", label: "Services" },
   { to: "/mortgage", label: "Mortgage" },
   { to: "/about", label: "About" },
-  { to: "/careers", label: "Careers" },
   { to: "/blog", label: "Blog" },
   { to: "/contact", label: "Contact" },
 ] as const;
@@ -69,7 +67,7 @@ export function Header() {
           <Link to="/" className="flex flex-col leading-tight">
             <span className="font-serif text-xl md:text-2xl font-bold text-primary">Jim Gladden</span>
             <span className="text-[10px] md:text-xs tracking-[0.25em] uppercase text-gold font-medium">
-              Bob Lucido Team · KW
+              Lucido Global
             </span>
           </Link>
 

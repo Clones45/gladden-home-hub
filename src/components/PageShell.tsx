@@ -20,7 +20,7 @@ export function CTASection() {
       <div className="container mx-auto px-6 text-center text-gold-foreground">
         <h2 className="font-serif text-3xl md:text-4xl font-bold">Let's Talk About Your Goals</h2>
         <p className="mt-3 text-gold-foreground/80 max-w-xl mx-auto">
-          Reach Jim directly — personal service, every time.
+          Reach Jim directly personal service, every time.
         </p>
         <div className="mt-7 flex flex-wrap gap-4 justify-center">
           <Button variant="elegant" size="xl" asChild>

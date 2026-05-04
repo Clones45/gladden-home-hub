@@ -11,7 +11,7 @@ export const Route = createFileRoute("/mortgage")({
   head: () => ({
     meta: [
       { title: "Mortgage Calculator & Lending Partners | Jim Gladden" },
-      { name: "description", content: "Estimate your monthly payment and connect with trusted Central Maryland lenders through the Bob Lucido Team." },
+      { name: "description", content: "Estimate your monthly payment and connect with trusted Central Maryland lenders through Jim Gladden — affiliated with Lucido Global." },
     ],
   }),
   component: MortgagePage,
@@ -33,8 +33,10 @@ function MortgagePage() {
       <PageHero eyebrow="Mortgage" title="Plan Your Purchase with Confidence" subtitle="Estimate your payment and get connected with vetted local lending partners." />
       <section className="py-20 container mx-auto px-6 grid lg:grid-cols-2 gap-10">
         <Card className="p-8 shadow-elegant border-0">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-12 h-12 rounded-xl bg-gradient-gold flex items-center justify-center"><Calculator className="h-6 w-6 text-gold-foreground" /></div>
+          <div className="flex items-center gap-4 mb-8">
+            <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center shrink-0 text-gold">
+              <Calculator className="h-6 w-6" />
+            </div>
             <h2 className="font-serif text-2xl font-bold text-primary">Mortgage Calculator</h2>
           </div>
           <div className="space-y-4">
@@ -54,7 +56,7 @@ function MortgagePage() {
         <div>
           <h2 className="font-serif text-3xl font-bold text-primary">Trusted Lending Partners</h2>
           <p className="mt-4 text-muted-foreground">
-            The Bob Lucido Team works hand-in-hand with preferred Maryland lenders who close on time and
+            Jim Gladden works hand-in-hand with preferred Maryland lenders who close on time and
             communicate clearly. Whether you're a first-time buyer, jumbo, VA, FHA, or refinancing — we'll
             introduce you to the right loan officer.
           </p>

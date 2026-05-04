@@ -67,7 +67,7 @@ export function LeadForm({ compact = false }: { compact?: boolean }) {
       <label className="flex gap-2 items-start text-xs text-muted-foreground cursor-pointer">
         <Checkbox checked={consent} onCheckedChange={(v) => setConsent(v === true)} className="mt-0.5" />
         <span>
-          I consent to receive electronic communications from Jim Gladden and the Bob Lucido Team
+          I consent to receive electronic communications from Jim Gladden and Lucido Global
           regarding real estate services. Message and data rates may apply.
         </span>
       </label>

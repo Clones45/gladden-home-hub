@@ -7,8 +7,8 @@ import { PageHero, CTASection } from "@/components/PageShell";
 export const Route = createFileRoute("/sell")({
   head: () => ({
     meta: [
-      { title: "Sell Your Home with Jim Gladden | Bob Lucido Team" },
-      { name: "description", content: "Sell your Central Maryland home with the proven marketing power of the Bob Lucido Team. Free home valuation, Guaranteed Sale program available." },
+      { title: "Sell Your Home with Jim Gladden | Lucido Global" },
+      { name: "description", content: "Sell your Central Maryland home with Jim Gladden — proven marketing, Guaranteed Sale program, and Lucido Global's local expertise." },
     ],
   }),
   component: SellPage,
@@ -17,7 +17,7 @@ export const Route = createFileRoute("/sell")({
 const steps = [
   { icon: TrendingUp, title: "Strategic Pricing", desc: "Data-driven CMA backed by hyperlocal market intelligence." },
   { icon: Camera, title: "Professional Marketing", desc: "Magazine-quality photography, video, and 3D tours that sell." },
-  { icon: Megaphone, title: "Maximum Exposure", desc: "Bright MLS, premium portals, social, and the Bob Lucido network." },
+  { icon: Megaphone, title: "Maximum Exposure", desc: "Bright MLS, premium portals, social, and the Lucido Global network." },
   { icon: Handshake, title: "Skilled Negotiation", desc: "Decades of experience protecting your bottom line at the table." },
 ];
 
@@ -32,12 +32,12 @@ function SellPage() {
           <p className="mt-4 text-muted-foreground">A proven, four-step system designed to get top dollar with less stress.</p>
           <div className="mt-8 space-y-5">
             {steps.map((s, i) => (
-              <div key={s.title} className="flex gap-4">
-                <div className="w-12 h-12 rounded-lg bg-gradient-gold flex items-center justify-center shrink-0 shadow-gold">
-                  <s.icon className="h-6 w-6 text-gold-foreground" />
+              <div key={s.title} className="flex gap-5 items-start">
+                <div className="w-10 h-10 rounded-full border-2 border-gold/50 flex items-center justify-center shrink-0 font-bold text-gold text-sm mt-0.5">
+                  {String(i + 1).padStart(2, "0")}
                 </div>
                 <div>
-                  <h3 className="font-serif text-lg font-bold text-primary">{i + 1}. {s.title}</h3>
+                  <h3 className="font-serif text-lg font-bold text-primary">{s.title}</h3>
                   <p className="text-sm text-muted-foreground mt-1">{s.desc}</p>
                 </div>
               </div>

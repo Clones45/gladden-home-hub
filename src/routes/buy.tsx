@@ -1,81 +1,162 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { Search, MapPin, Bed, Bath, Maximize } from "lucide-react";
-import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Search, ExternalLink, Bell, MapPin, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { PageHero, CTASection } from "@/components/PageShell";
-import property1 from "@/assets/property-1.jpg";
-import property2 from "@/assets/property-2.jpg";
-import property3 from "@/assets/property-3.jpg";
+import { Card } from "@/components/ui/card";
 
 export const Route = createFileRoute("/buy")({
   head: () => ({
     meta: [
-      { title: "Buy a Home in Central Maryland | Jim Gladden" },
-      { name: "description", content: "Search active listings across Sykesville, Eldersburg, Westminster, Columbia, and Frederick MD with Jim Gladden of the Bob Lucido Team." },
+      { title: "Search Homes | Jim Gladden — Lucido Global" },
+      {
+        name: "description",
+        content:
+          "Full IDX home search coming soon. Browse active listings in Sykesville, Eldersburg, Westminster, Columbia, and Frederick MD with Jim Gladden, Realtor.",
+      },
     ],
   }),
   component: BuyPage,
 });
 
-const listings = [
-  { img: property1, price: "$825,000", address: "825 Caren Dr, Eldersburg, MD", beds: 5, baths: 4, sqft: "4,200", type: "Single Family" },
-  { img: property2, price: "$489,000", address: "112 Sykesville Way, Sykesville, MD", beds: 3, baths: 2.5, sqft: "2,150", type: "Townhouse" },
-  { img: property3, price: "$1,275,000", address: "8 Westminster Ridge, Westminster, MD", beds: 6, baths: 5, sqft: "6,800", type: "Luxury Estate" },
-  { img: property1, price: "$619,000", address: "402 Columbia Pkwy, Columbia, MD", beds: 4, baths: 3, sqft: "3,100", type: "Single Family" },
-  { img: property2, price: "$365,000", address: "27 Frederick Mews, Frederick, MD", beds: 2, baths: 2, sqft: "1,480", type: "Condo" },
-  { img: property3, price: "$1,950,000", address: "Lakeside Estate, Sykesville, MD", beds: 7, baths: 6, sqft: "8,200", type: "Luxury Estate" },
+const areas = [
+  { name: "Sykesville", zip: "21784" },
+  { name: "Eldersburg", zip: "21784" },
+  { name: "Westminster", zip: "21157" },
+  { name: "Columbia", zip: "21044" },
+  { name: "Frederick", zip: "21701" },
+  { name: "Ellicott City", zip: "21042" },
 ];
 
 function BuyPage() {
   return (
-    <div>
-      <PageHero
-        eyebrow="Buy"
-        title="Find Your Next Home in Central Maryland"
-        subtitle="Browse active IDX listings, save favorites, and tour with Jim — your local expert."
-      />
+    <div className="min-h-screen">
 
-      <section className="container mx-auto px-6 -mt-10 relative z-10">
-        <Card className="p-6 shadow-elegant flex flex-col md:flex-row gap-3">
-          <div className="flex items-center gap-2 flex-1 px-3 border border-border rounded-md">
-            <Search className="h-4 w-4 text-muted-foreground" />
-            <Input placeholder="City, ZIP, address, or community" className="border-0 focus-visible:ring-0" />
-          </div>
-          <Button variant="hero" size="lg">Search Homes</Button>
-        </Card>
-      </section>
+      {/* Hero */}
+      <section className="relative bg-primary text-primary-foreground overflow-hidden">
+        {/* Subtle grid overlay */}
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(0deg,#fff 0,#fff 1px,transparent 1px,transparent 60px),repeating-linear-gradient(90deg,#fff 0,#fff 1px,transparent 1px,transparent 60px)",
+          }}
+        />
+        <div className="relative container mx-auto px-6 py-28 md:py-40 flex flex-col items-center text-center">
+          {/* Badge */}
 
-      <section className="py-16">
-        <div className="container mx-auto px-6">
-          <h2 className="font-serif text-3xl font-bold text-primary mb-8">Active Listings</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
-            {listings.map((p, i) => (
-              <Card key={i} className="overflow-hidden group hover:shadow-elegant transition-smooth border-border/60">
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img src={p.img} alt={p.address} className="w-full h-full object-cover group-hover:scale-105 transition-smooth" loading="lazy" />
-                  <span className="absolute top-4 left-4 px-3 py-1 text-xs font-bold uppercase bg-gold text-gold-foreground rounded-sm">Active</span>
-                  <span className="absolute top-4 right-4 px-3 py-1 text-xs font-medium bg-white/90 text-primary rounded-sm">{p.type}</span>
-                </div>
-                <div className="p-6">
-                  <div className="font-serif text-2xl font-bold text-primary">{p.price}</div>
-                  <div className="flex items-center text-sm text-muted-foreground mt-1"><MapPin className="h-3.5 w-3.5 mr-1" />{p.address}</div>
-                  <div className="flex gap-5 mt-4 pt-4 border-t border-border text-sm text-muted-foreground">
-                    <span className="flex items-center gap-1.5"><Bed className="h-4 w-4 text-gold" /> {p.beds} bd</span>
-                    <span className="flex items-center gap-1.5"><Bath className="h-4 w-4 text-gold" /> {p.baths} ba</span>
-                    <span className="flex items-center gap-1.5"><Maximize className="h-4 w-4 text-gold" /> {p.sqft} sqft</span>
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
-          <p className="mt-8 text-xs text-muted-foreground text-center">
-            Listings powered by Bright MLS IDX. Information deemed reliable but not guaranteed.
+          <h1 className="font-serif text-5xl md:text-7xl font-bold leading-tight max-w-3xl">
+            Full Home Search<br />
+            <span className="text-gold">Coming Soon</span>
+          </h1>
+
+          <p className="mt-6 text-primary-foreground/75 text-lg max-w-xl leading-relaxed">
+            We're integrating a live IDX search so you can browse every active listing in Central Maryland
+            right here. In the meantime, Jim is ready to help you find exactly what you're looking for.
           </p>
+
+          <div className="mt-10 flex flex-col sm:flex-row gap-4">
+            <Button variant="hero" size="lg" asChild>
+              <Link to="/contact">
+                <Phone className="mr-2 h-4 w-4" /> Talk to Jim Today
+              </Link>
+            </Button>
+            <Button
+              variant="outlineLight"
+              size="lg"
+              asChild
+            >
+              <a
+                href="https://www.zillow.com/agent-profile/X1-ZUZFl5uozbclm3_3g0bk/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <ExternalLink className="mr-2 h-4 w-4" /> Browse on Zillow
+              </a>
+            </Button>
+          </div>
         </div>
       </section>
 
-      <CTASection />
+      {/* Search teaser — disabled but visible */}
+      <section className="container mx-auto px-6 -mt-8 relative z-10">
+        <Card className="p-5 shadow-elegant flex flex-col md:flex-row gap-3 items-center opacity-60 pointer-events-none select-none">
+          <div className="flex items-center gap-2 flex-1 px-4 py-3 border border-border rounded-md bg-muted/40">
+            <Search className="h-4 w-4 text-muted-foreground" />
+            <span className="text-muted-foreground text-sm">City, ZIP, address, or community…</span>
+          </div>
+          <Button variant="hero" size="lg" disabled className="opacity-50">
+            Search Homes
+          </Button>
+        </Card>
+        <p className="text-center text-xs text-muted-foreground mt-3">
+          Live IDX search powered by Bright MLS — launching soon
+        </p>
+      </section>
+
+      {/* Areas we serve */}
+      <section className="py-20">
+        <div className="container mx-auto px-6">
+          <div className="text-center max-w-xl mx-auto mb-12">
+            <span className="text-gold uppercase tracking-[0.25em] text-xs font-semibold">Service Area</span>
+            <h2 className="font-serif text-4xl font-bold mt-3 text-primary">
+              Communities We Serve
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              Jim specializes in these Central Maryland neighborhoods. Click any area to search active listings on Zillow right now.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
+            {areas.map((area) => (
+              <a
+                key={area.name}
+                href={`https://www.zillow.com/homes/${encodeURIComponent(area.name + ", MD " + area.zip)}_rb/?searchQueryState=%7B%22filterState%22%3A%7B%22sort%22%3A%7B%22value%22%3A%22globalrelevanceex%22%7D%7D%7D`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-3 p-4 rounded-xl border border-border/60 hover:border-gold hover:shadow-card-elegant transition-smooth bg-white"
+              >
+                <MapPin className="h-4 w-4 text-gold flex-shrink-0" />
+                <div>
+                  <div className="font-semibold text-primary text-sm group-hover:text-gold transition-smooth">
+                    {area.name}
+                  </div>
+                  <div className="text-xs text-muted-foreground">{area.zip}</div>
+                </div>
+                <ExternalLink className="h-3 w-3 text-muted-foreground ml-auto opacity-0 group-hover:opacity-100 transition-smooth" />
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact CTA */}
+      <section className="py-20 bg-gradient-subtle border-t border-border/40">
+        <div className="container mx-auto px-6">
+          <div className="max-w-3xl mx-auto rounded-2xl bg-primary text-primary-foreground p-10 md:p-14 text-center shadow-elegant">
+            <span className="text-gold uppercase tracking-[0.25em] text-xs font-semibold">
+              Don't Wait
+            </span>
+            <h2 className="font-serif text-4xl font-bold mt-3">
+              Ready to Start Your Search?
+            </h2>
+            <p className="mt-4 text-primary-foreground/75 max-w-lg mx-auto leading-relaxed">
+              Jim has access to every listing in Central Maryland — including off-market and coming-soon properties.
+              Reach out today and let him do the searching for you.
+            </p>
+            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+              <Button variant="hero" size="lg" asChild>
+                <a href="tel:4103750332">
+                  <Phone className="mr-2 h-4 w-4" /> 410.375.0332
+                </a>
+              </Button>
+              <Button variant="outlineLight" size="lg" asChild>
+                <a href="mailto:jimgladden@boblucidoteam.com">
+                  <Mail className="mr-2 h-4 w-4" /> Email Jim
+                </a>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 }
