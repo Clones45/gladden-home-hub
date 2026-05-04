@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowRight, BookOpen, Clock, User, Calendar } from "lucide-r
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CTASection } from "@/components/PageShell";
-import { getPostBySlug, getRelatedPosts } from "@/data/blogPosts";
+import { getPostBySlug, getRelatedPosts, type BlogPost } from "@/data/blogPosts";
 
 export const Route = createFileRoute("/blog/$slug")({
   head: ({ params }) => {
@@ -74,7 +74,7 @@ const TAG_TEXT: Record<string, string> = {
 };
 
 function BlogPostPage() {
-  const { post, related } = Route.useLoaderData();
+  const { post, related } = Route.useLoaderData() as { post: BlogPost; related: BlogPost[] };
 
   return (
     <div>
@@ -162,7 +162,7 @@ function BlogPostPage() {
           <div className="container mx-auto px-6">
             <h2 className="font-serif text-2xl font-bold text-primary mb-8">More from Jim's Blog</h2>
             <div className="grid md:grid-cols-3 gap-6">
-              {related.map((r) => (
+              {related.map((r: BlogPost) => (
                 <Link key={r.slug} to="/blog/$slug" params={{ slug: r.slug }} className="block group">
                   <Card className="p-6 h-full flex flex-col hover:shadow-elegant transition-smooth border-border/60">
                     <span className={`inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider mb-3 ${TAG_TEXT[r.tag] ?? "text-gold"}`}>
