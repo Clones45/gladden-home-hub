@@ -21,6 +21,18 @@ const services = {
   ["ssr"]: lazyService(() => import("./_ssr/index.mjs"))
 };
 globalThis.__nitro_vite_envs__ = services;
+function errorHandler$2(error, event) {
+  console.error("Vercel HTTPError Details:", error);
+  const errorMessage = error instanceof Error ? error.message : String(error);
+  const errorStack = error instanceof Error ? error.stack : "";
+  event.res.setHeader("content-type", "application/json");
+  event.res.end(JSON.stringify({
+    error: "Detailed Error",
+    message: errorMessage,
+    stack: errorStack,
+    original: error
+  }));
+}
 const errorHandler$1 = (error, event) => {
   const res = defaultHandler(error, event);
   return new NodeResponse(typeof res.body === "string" ? res.body : JSON.stringify(res.body, null, 2), res);
@@ -58,7 +70,7 @@ function defaultHandler(error, event) {
     }
   };
 }
-const errorHandlers = [errorHandler$1];
+const errorHandlers = [errorHandler$2, errorHandler$1];
 async function errorHandler(error, event) {
   for (const handler of errorHandlers) {
     try {
