@@ -19,7 +19,7 @@ export function LeadForm({ compact = false }: { compact?: boolean }) {
   const [consent, setConsent] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const result = schema.safeParse({ ...form, consent });
     if (!result.success) {
@@ -27,12 +27,38 @@ export function LeadForm({ compact = false }: { compact?: boolean }) {
       return;
     }
     setLoading(true);
-    setTimeout(() => {
+    
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/jimgladden@boblucidoteam.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          Name: form.name,
+          Email: form.email,
+          Phone: form.phone,
+          Message: form.message,
+          _subject: "New Lead from Jim Gladden Website",
+          _captcha: "false",
+          _template: "table"
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
+
       toast.success("Thank you! Jim will be in touch shortly.");
       setForm({ name: "", email: "", phone: "", message: "" });
       setConsent(false);
+    } catch (error) {
+      toast.error("Oops! Something went wrong. Please try again or call Jim directly.");
+      console.error("Form submission error:", error);
+    } finally {
       setLoading(false);
-    }, 700);
+    }
   };
 
   return (
